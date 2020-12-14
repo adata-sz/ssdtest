@@ -1,0 +1,110 @@
+package DISKTest::Test;
+use strict;
+require 5.000;
+require Exporter;
+
+@DISKTest::Test::ISA = qw(Exporter);
+@DISKTest::Test::EXPORT = qw(performance_test read_performance_test write_performance_test burnin_test secure_erase);
+$DISKTest::Test::VERSION = '1.00';
+
+# 4K performance
+sub performance_test
+{
+	my $disk = $_[0];
+	my $cmd;
+	my $dh;
+	$cmd = "stressapptest -d /dev/$disk->{'disk_dev'} --read-block-size 4096 --cache-size 0 --random-threads 0 --destructive -s 10";
+	print "$cmd\n";
+	#open($dh, "$cmd|") or die;
+	#while (<$dh>) {
+	#	print;
+	#}
+	#close($dh);
+
+	$cmd = "stressapptest -d /dev/$disk->{'disk_dev'} --read-block-size 4096 --cache-size 0 --random-threads 63 --destructive -s 10";
+	print "$cmd\n";
+	#open($dh, "$cmd|") or die;
+	#while (<$dh>) {
+	#	print;
+	#}
+	#close($dh);
+}
+
+# read performance
+sub read_performance_test
+{
+	my $disk = $_[0];
+	my $cmd = "hdparm -t /dev/$disk->{'disk_dev'}";
+	print "$cmd\n";
+	my $dh;
+	open($dh, "$cmd|") or die;
+	while (<$dh>) {
+		print;
+	}
+	close($dh);
+}
+
+# write performance
+sub write_performance_test
+{
+	my $disk = $_[0];
+	my $cmd;
+	my $dh;
+
+	$cmd = "time dd if=/dev/mem of=/dev/$disk->{'disk_dev'} bs=4096 count=65536 conv=fdatasync,notrunc";
+	print "$cmd\n";
+	open($dh, "$cmd|") or die;
+	while (<$dh>) {
+		print;
+	}
+	close($dh);
+	$cmd = "time dd if=/dev/mem of=/dev/$disk->{'disk_dev'} bs=1M count=256 conv=fdatasync,notrunc\n";
+	print "$cmd\n";
+	open($dh, "$cmd|") or die;
+	while (<$dh>) {
+		print;
+	}
+	close($dh);
+}
+
+# burn-In + scan ECC
+sub burnin_test {
+	my $disk = $_[0];
+	my $cmd;
+	$cmd = "badblocks -svw -b 65536 -t random -c 1 -p 1 /dev/$disk->{'disk_dev'}";
+	print "$cmd\n";
+	
+	my $dh;
+	open($dh, "$cmd|") or die;
+	while (<$dh>) {
+		print;
+	}
+	close($dh);
+}
+
+# security erase
+sub secure_erase {
+	my $disk = $_[0];
+	my $cmd;
+	$cmd = "hdparm --security-set-pass ‘NULL’ /dev/$disk->{'disk_dev'}";
+	print "$cmd\n";
+
+	my $dh;
+	open($dh, "$cmd|") or die;
+	while (<$dh>) {
+		print;
+	}
+	close($dh);
+
+	sleep 2;
+	
+	$cmd = "hdparm --security-erase ‘NULL’ /dev/$disk->{'disk_dev'}";
+	print "$cmd\n";
+	open($dh, "$cmd|") or die;
+	while (<$dh>) {
+		print;
+	}
+	close($dh);
+}
+
+1;

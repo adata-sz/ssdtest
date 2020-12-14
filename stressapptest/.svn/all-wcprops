@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/SSD/!svn/ver/9/trunk/stressapptest
+END
+configure
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/SSD/!svn/ver/9/trunk/stressapptest/configure
+END
+Makefile.in
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/SSD/!svn/ver/9/trunk/stressapptest/Makefile.in
+END
+configure.ac
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/SSD/!svn/ver/9/trunk/stressapptest/configure.ac
+END
+stressapptest.1
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/SSD/!svn/ver/9/trunk/stressapptest/stressapptest.1
+END
+depcomp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/SSD/!svn/ver/9/trunk/stressapptest/depcomp
+END
+COPYING
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/SSD/!svn/ver/9/trunk/stressapptest/COPYING
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/SSD/!svn/ver/9/trunk/stressapptest/Makefile.am
+END
+missing
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/SSD/!svn/ver/9/trunk/stressapptest/missing
+END
+config.guess
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/SSD/!svn/ver/9/trunk/stressapptest/config.guess
+END
+aclocal.m4
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/SSD/!svn/ver/9/trunk/stressapptest/aclocal.m4
+END
+config.sub
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/SSD/!svn/ver/9/trunk/stressapptest/config.sub
+END
+install-sh
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/SSD/!svn/ver/9/trunk/stressapptest/install-sh
+END
